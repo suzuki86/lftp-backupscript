@@ -15,4 +15,4 @@ remotedir=
 
 mkdir $dir
 cd $dir
-lftp -e "mirror --parallel=10 $remotedir .; exit;" -u $username,$password $hostname
+lftp -e "set ftp:list-options -a; mirror --verbose=3 --parallel=10 $remotedir .; exit;" -u $username,$password $hostname
