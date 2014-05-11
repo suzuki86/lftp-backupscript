@@ -13,6 +13,8 @@ dir=
 # Path of Remote directory.
 remotedir=
 
-mkdir $dir
+if [ ! -e $dir ]; then
+  mkdir $dir
+fi
 cd $dir
 lftp -e "set ftp:list-options -a; mirror --verbose=3 --parallel=10 $remotedir .; exit;" -u $username,$password $hostname
